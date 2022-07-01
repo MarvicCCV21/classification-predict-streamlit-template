@@ -32,7 +32,7 @@ from streamlit_option_menu import option_menu
 import pandas as pd
 
 #Vectorizer
-news_vectorizer = open("resources/tfidfvect.pkl","rb")
+news_vectorizer = open("resources/vector2.pkl","rb")
 # loading your vectorizer from the pkl file
 tweet_cv = joblib.load(news_vectorizer)
 
@@ -107,20 +107,20 @@ def main() -> object:
 
 		# Model selection options
 		if option == 'Linear Support Vector Classifier':
-			model = 'resources/Final_LSVC.pkl'
+			model = 'resources/naive_bayes_model.pkl'
 
 		elif option == "Support Vector Classifier":
-			model = 'resources/SVC_model.pkl'
+			model = 'resources/SVC2_model.pkl'
 
 		elif option == 'Logistic Regression':
-			model = 'resources/Logistic_regression.pkl'
+			model = 'resources/log_reg_model.pkl'
 
 		if st.button("Classify"):
 			# Transforming user input with vectorizer
 			vect_text = tweet_cv.transform([tweet_text]).toarray()
 			# Load your .pkl file with the model of your choice + make predictions
 			# Try loading in multiple models to give the user a choice
-			predictor = joblib.load(open(os.path.join('resources/Logistic_regression.pkl'),"rb"))
+			predictor = joblib.load(open(os.path.join(model),"rb"))
 			prediction = predictor.predict(vect_text)
 
 			word = ''
