@@ -125,7 +125,7 @@ def main() -> object:
 
 			word = ''
 			if prediction == 0:
-				word = ' "**PRO:**".  This tweet neither supports nor refutes the belief of man-made climate change'
+				word = ' "**NEUTRAL::**".  This tweet neither supports nor refutes the belief of man-made climate change'
 
 			elif prediction == 1:
 				word = '"**PRO:**". This tweet supports the belief of man-made climate change'
